@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录注册界面</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+<!-- 整体布局 -->
+<div class="container right-panel-active">
+    <!-- 登录框 -->
+    <div class="container_from container_signin">
+        <form class="form" id="form" method="post" th:action="@{/login}">
+            <h2 class="form_title">欢迎登录</h2>
+            <div class="row">
+                <span>用户名：</span>
+                <input type="text" name="username" placeholder="请输入您的账号" class="input">
+            </div>
+            <div class="row">
+                <span>密&emsp;码：</span>
+                <input type="password" name="password" placeholder="请输入您的密码" class="input">
+            </div>
+            <div class="row">
+                <span th:text="${msg}"></span>
+            </div>
+            <input type="submit" class="btn" value="登录"/>
+        </form>
+        <form class="form" method="get" id="form1" th:action="@{/register}">
+            <label id="register" class="form-label" >没有账号？请点击
+            <input class="btn" type="submit" value="注册"/>
+        </form>
+    </div>
+
+
+
+
+</div>
+<script src="../static/login.js"></script>
+</body>
+</html>

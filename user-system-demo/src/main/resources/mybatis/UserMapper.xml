@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper标签要指定namespace属性，和实际的mapper文件一致-->
+<mapper namespace="com.example.demospringboot.dao.UserMapper">
+    <select id="findUserById" resultType="com.example.demospringboot.bean.User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="findUserByName" resultType="com.example.demospringboot.bean.User">
+        select * from user where username = #{username}
+    </select>
+
+    <select id="getUserRole" parameterType="int" resultType="String">
+        SELECT
+            NAME AS role
+        FROM
+            USER u
+        LEFT JOIN user_role ur ON id = ur.user_id
+        LEFT JOIN role r ON r.id = ur.role_id
+        WHERE u.id = #{id}
+    </select>
+
+    <select id="findAllUsers" resultType="com.example.demospringboot.bean.User">
+        select * from user
+    </select>
+
+    <delete id="deleteAllUsers" >
+        delete from user
+    </delete>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+    <insert id="insertUser" parameterType="com.example.demospringboot.bean.User">
+        insert into user(id,username,password) values(#{user.id},#{user.username},#{user.password})
+    </insert>
+
+    <update id="updateUserPassword" parameterType="com.example.demospringboot.bean.User">
+        update user set password=#{user.password} where id=#{user.id}
+    </update>
+</mapper>
