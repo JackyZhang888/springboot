@@ -17,6 +17,7 @@
 	<modules>
 		<module>nacos-demo</module>
 		<module>user-system-demo</module>
+		<module>token-interceptor-demo</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper标签要指定namespace属性，和实际的mapper文件一致-->
+<mapper namespace="com.example.dao.UserMapper">
+    <select id="findAllUsers" resultType="com.example.bean.User">
+        select * from user
+    </select>
+    <insert id="insertUser" parameterType="com.example.bean.User">
+        insert into user(id,username,password) values(#{user.id},#{user.username},#{user.password})
+    </insert>
+</mapper>
