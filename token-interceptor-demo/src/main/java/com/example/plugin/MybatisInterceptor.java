@@ -22,7 +22,7 @@ import java.util.Properties;
         @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})
 })
 @Slf4j
-public class SqlInterceptor implements Interceptor  {
+public class MybatisInterceptor implements Interceptor  {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         // 获取原始sql

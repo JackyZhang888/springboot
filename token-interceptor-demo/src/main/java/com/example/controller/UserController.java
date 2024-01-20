@@ -1,19 +1,20 @@
 package com.example.controller;
 
+import com.example.annotation.PassToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import com.alibaba.fastjson.JSONObject;
 import com.example.bean.User;
-import com.example.service.UserService;
+import com.example.service.*;
 
 @RestController
 @RequestMapping
 @Slf4j
 public class UserController {
-  //  @Autowired
-   // TokenService tokenService;
+    @Autowired
+    TokenService tokenService;
 
     @Autowired
     UserService userService;
@@ -28,10 +29,12 @@ public class UserController {
      * @return
      */
     @PostMapping("/users")
+    @PassToken
     public JSONObject postUser(@RequestBody User user) {
         // @RequestBody注解用来绑定通过http请求中application/json类型上传的数据
         JSONObject jsonObject=new JSONObject();
-//        jsonObject.put("token", token);
+        String token = tokenService.getToken(user);
+        jsonObject.put("token", token);
         jsonObject.put("user", user);
         userService.addUser(user);
         return jsonObject;
