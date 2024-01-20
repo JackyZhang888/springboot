@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.annotation.PassToken;
 import com.example.bean.User;
 import com.example.service.UserService;
 import com.example.dao.UserMapper;
